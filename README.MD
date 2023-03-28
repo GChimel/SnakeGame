@@ -3,6 +3,7 @@
 <h2 align="center"> 📌UPCOMING VERSIONS</h2>
 
 - Button to restart the game
+  * close the previous match window
 - Change the snake skin for an image
 - Option  to change the snake speed
 - ...

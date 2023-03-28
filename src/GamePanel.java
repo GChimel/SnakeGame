@@ -55,7 +55,7 @@ public class GamePanel extends JPanel implements ActionListener {
                 g.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, SCREEN_HEIGHT);
                 g.drawLine(0, i * UNIT_SIZE, SCREEN_WIDTH, i * UNIT_SIZE);
             }
-            g.setColor(Color.red);
+            g.setColor(Color.RED);
             g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
 
             for (int i = 0; i < bodyParts; i++) {
@@ -67,8 +67,8 @@ public class GamePanel extends JPanel implements ActionListener {
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
-            g.setColor(Color.red);
-            g.setFont(new Font("Ink Free", Font.BOLD, 40));
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Wide latin", Font.ITALIC, 40));
             FontMetrics metrics = getFontMetrics(g.getFont());
             g.drawString("Pontos: " + appleEaten, (SCREEN_WIDTH - metrics.stringWidth("Pontos: " + appleEaten))/2, g.getFont().getSize());
         }
@@ -143,15 +143,23 @@ public class GamePanel extends JPanel implements ActionListener {
 
     public void gameOver(Graphics g) {
 //        Score
-        g.setColor(Color.red);
-        g.setFont(new Font("Ink Free", Font.BOLD, 40));
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Wide latin", Font.ITALIC, 35));
         FontMetrics metrics1 = getFontMetrics(g.getFont());
         g.drawString("Total de pontos: " + appleEaten, (SCREEN_WIDTH - metrics1.stringWidth("Total de pontos: " + appleEaten))/2, g.getFont().getSize());
 //        Game Over Text
-        g.setColor(Color.red);
-        g.setFont(new Font("Ink Free", Font.BOLD, 75));
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Wide latin", Font.ITALIC, 60));
         FontMetrics metrics2 = getFontMetrics(g.getFont());
         g.drawString("Você Perdeu!", (SCREEN_WIDTH - metrics2.stringWidth("Você Perdeu!"))/2, SCREEN_HEIGHT/2);
+
+        JButton button = new JButton("Tentar novamente!");
+        button.setFont(new Font("Wide latin", Font.ITALIC, 15));
+        add(button);
+        button.setBackground(Color.WHITE);
+        button.setForeground(Color.GRAY);
+        button.setBounds(270,425,300,70);
+        button.addActionListener(e -> new GameFrame());
     }
 
     @Override
@@ -165,34 +173,6 @@ public class GamePanel extends JPanel implements ActionListener {
         repaint();
     }
 
-    //    public class MyKeyAdapter extends KeyAdapter {
-//        @Override
-//        public void KeyPressed(KeyEvent e) {
-//            switch (e.getKeyCode()) {
-//                case KeyEvent.VK_LEFT:
-//                    if (direction != 'R') {
-//                        direction = 'L';
-//                    }
-//                    break;
-//                case KeyEvent.VK_RIGHT:
-//                    if (direction != 'L') {
-//                        direction = 'R';
-//                    }
-//                    break;
-//                case KeyEvent.VK_UP:
-//                    if (direction != 'D') {
-//                        direction = 'U';
-//                    }
-//                    break;
-//                case KeyEvent.VK_DOWN:
-//                    if (direction != 'U') {
-//                        direction = 'D';
-//                    }
-//                    break;
-//            }
-//        }
-//
-//    }
     public class MyKeyAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
